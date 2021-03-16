@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const authUserSecret = process.env.AUTH_USER_SECRET
+const JwtStrategy = require('passport-jwt').Strategy
+const authUserSecret = 'thisismysupersecret'
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
@@ -42,6 +43,35 @@ function signUserToken (user) {
     email: user.email
   }, authUserSecret)
 }
+
+const tokenExtractor = function (req) {
+  let token = null
+  if (req.req && req.req.cookies && req.req.cookies['auth._token.local']) {
+    const rawToken = req.req.cookies['auth._token.local'].toString()
+    token = rawToken.slice(rawToken.indexOf(' ') + 1, rawToken.length)
+  }
+  return token
+}
+
+passport.use(new JwtStrategy({
+  jwtFromRequest: tokenExtractor,
+  secretOrKey: authUserSecret
+},
+function (jwtPayload, done) {
+  return GetUser(jwtPayload.email)
+    .then((user) => {
+      if (user) {
+        return done(null, {
+          email: user.email
+        })
+      } else {
+        return done(null, false, 'Failed')
+      }
+    })
+    .catch((err) => {
+      return done(err)
+    })
+}))
 
 async function CreateUser (email, password) {
   return await User.create({ email, password })

@@ -4,7 +4,17 @@ const router = express.Router()
 const passport = require('passport')
 
 router.get('/user', async (req, res) => {
-  res.send('It works!')
+  passport.authenticate('jwt', { session: false }, (err, user, message) => {
+    if (err) {
+      // you should log it
+      return res.status(400).send(err)
+    } else if (!user) {
+      // you should log it
+      return res.status(403).send({ message })
+    } else {
+      return res.send({ user })
+    }
+  })(res, req)
 })
 
 router.post('/register', async (req, res) => {

@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 const express = require('express')
 const app = express()
-const passport = require('passport');
+const passport = require('passport')
+const cookieParser = require('cookie-parser')
 
 const mongoose = require('mongoose')
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/test', function (req, res) {

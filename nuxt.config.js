@@ -35,15 +35,15 @@ export default {
             url: '/api/auth/user',
             method: 'get',
             propertyName: false
-          },
-        },
+          }
+        }
       }
     },
     redirect: {
       logout: '/',
       callback: '/login',
       home: '/'
-    },
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
