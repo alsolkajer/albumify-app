@@ -1,9 +1,7 @@
 import AuthenticationController from '../controllers/authentication.controller'
 const express = require('express')
 const router = express.Router()
-
-router.post('/login', async (req, res) => {
-})
+const passport = require('passport')
 
 router.get('/user', async (req, res) => {
   res.send('It works!')
@@ -25,6 +23,21 @@ router.post('/register', async (req, res) => {
         throw err
       })
   }
+})
+
+router.post('/login', (req, res) => {
+  passport.authenticate('local', { session: false }, (err, user, message) => {
+    if (err) {
+      // you should log it
+      return res.status(500).send(err)
+    } else if (!user) {
+      // you should log it
+      return res.status(403).send(message)
+    } else {
+      const token = AuthenticationController.signUserToken(user)
+      return res.send({ token })
+    }
+  })(req, res)
 })
 
 module.exports = router

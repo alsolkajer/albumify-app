@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const express = require('express')
 const app = express()
+const passport = require('passport');
 
 const mongoose = require('mongoose')
 
@@ -13,6 +14,9 @@ app.get('/test', function (req, res) {
 
 // DB Configuration
 const db = require('./config/keys').MongoURI
+
+// Initializing Passport
+app.use(passport.initialize())
 
 // Connect to Mongo
 mongoose.connect(db, { useNewUrlParser: true })

@@ -3,15 +3,13 @@
     <v-row
       :align="'center'"
       :justify="'center'"
-      class="mt-12">
+      class="mt-12"
+    >
       <v-col cols="12" md="6" lg="3">
         <authentication-form button-title="Logging" :form.sync="form" />
       </v-col>
     </v-row>
     <snack-bar :snackbar-message.sync="snackbarMessage" />
-    <v-row>
-      {{ form.email }}
-    </v-row>
   </v-container>
 </template>
 
