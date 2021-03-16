@@ -34,15 +34,10 @@ export default {
           user: {
             url: '/api/auth/user',
             method: 'get',
-            propertyName: false
+            property: false
           }
         }
       }
-    },
-    redirect: {
-      logout: '/',
-      callback: '/login',
-      home: '/'
     }
   },
 
@@ -70,7 +65,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://auth.nuxtjs.org/
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    // https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

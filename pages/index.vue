@@ -1,5 +1,9 @@
 <template>
   <button @click="showMessageFromBackend">
+    Hi
+    <div v-if="$auth.loggedIn">
+      {{ $auth.user.email }}
+    </div>
     Show message from backend
   </button>
 </template>
