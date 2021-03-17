@@ -9,8 +9,8 @@
     <v-btn
       dark
       text
-      @click="snackbar = false"
       title="close"
+      @click="snackbar = false"
     >
       Close
     </v-btn>
@@ -19,15 +19,16 @@
 
 <script>
 export default {
-  name: 'snackBar',
-  data: () => ({
-    snackbar: false
-  }),
+  name: 'SnackBar',
   props: {
     snackbarMessage: {
+      type: String,
       required: true
     }
   },
+  data: () => ({
+    snackbar: false
+  }),
   watch: {
     snackbarMessage (val) {
       if (val.length > 1) {
