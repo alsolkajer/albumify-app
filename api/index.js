@@ -22,7 +22,8 @@ app.use(passport.initialize())
 // Connect to Mongo
 mongoose.connect(db, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 })
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err))
@@ -30,7 +31,7 @@ mongoose.connect(db, {
 // Routes to authentication API
 
 app.use('/auth', require('./routes/authentication'))
-app.use('/upload', require('./routes/upload'))
+app.use('/files', require('./routes/files'))
 app.use('/dashboard', require('./routes/dashboard'))
 
 export default {

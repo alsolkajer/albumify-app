@@ -22,6 +22,12 @@ export default {
 
   auth: {
     localStorage: true,
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/dashboard'
+    },
     strategies: {
       local: {
         endpoints: {

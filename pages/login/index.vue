@@ -6,6 +6,9 @@
       class="mt-12"
     >
       <v-col cols="12" md="6" lg="3">
+        <v-card-text class="title">
+          Login to albumify
+        </v-card-text>
         <authentication-form button-title="Log in" :form.sync="form" />
       </v-col>
     </v-row>

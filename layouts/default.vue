@@ -97,9 +97,19 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-home',
+          title: 'Home',
           to: '/'
+        },
+        {
+          icon: 'mdi-view-dashboard',
+          title: 'Dashboard',
+          to: '/dashboard'
+        },
+        {
+          icon: 'mdi-file-upload',
+          title: 'Upload File',
+          to: '/upload'
         },
         {
           icon: 'mdi-chart-bubble',
@@ -110,7 +120,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Albumify - File Album'
     }
   }
 }

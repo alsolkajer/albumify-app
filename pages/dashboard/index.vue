@@ -6,7 +6,16 @@
     >
       <v-app-bar-nav-icon />
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Dashboard -</v-toolbar-title>
+      <v-toolbar-title
+        :style="{
+          fontSize: '14px',
+          marginBottom:'6px',
+          marginLeft:'6px'
+        }"
+      >
+        Tap to download file
+      </v-toolbar-title>
 
       <v-spacer />
 
@@ -15,7 +24,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
+    <v-main :style="{ padding: 0 }">
       <v-container>
         <v-row>
           <v-col
@@ -23,15 +32,19 @@
             :key="n"
             cols="4"
           >
-            <v-card height="200">
-              <v-card-title>
-                {{ file.filename }}
-                <v-img
-                  height="250"
-                  :src="'/api/upload/image/' + file.filename"
-                />
-              </v-card-title>
-            </v-card>
+            <a :href="'/api/files/' + file.filename">
+              <v-card height="300">
+                <v-card-title v-if="file.isImage">
+                  <v-img
+                    height="250"
+                    :src="'/api/files/image/' + file.filename"
+                  />
+                </v-card-title>
+                <v-card-title v-else>
+                  {{ file.filename }}
+                </v-card-title>
+              </v-card>
+            </a>
           </v-col>
         </v-row>
         <snack-bar :snackbar-message.sync="snackbarMessage" />
@@ -53,7 +66,7 @@ export default {
   }),
   mounted () {
     this.$axios
-      .get('/api/upload/files')
+      .get('/api/files/show')
       .then((response) => {
         this.files = response.data
       })

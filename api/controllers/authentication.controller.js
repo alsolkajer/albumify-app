@@ -1,10 +1,10 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const JwtStrategy = require('passport-jwt').Strategy
-const authUserSecret = 'thisismysupersecret'
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
+const authUserSecret = require('../config/keys').AuthUserKey
 
 passport.use(
   new LocalStrategy(

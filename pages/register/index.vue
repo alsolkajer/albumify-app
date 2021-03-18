@@ -6,6 +6,9 @@
       class="mt-12"
     >
       <v-col cols="12" md="6" lg="3">
+        <v-card-text class="title">
+          Register an account
+        </v-card-text>
         <authentication-form button-title="Register" :form.sync="form" />
       </v-col>
     </v-row>
@@ -58,7 +61,7 @@ export default {
         })
 
         if (user) {
-          await this.$router.push('/admin')
+          await this.$router.replace('/dashboard')
         }
       } catch (error) {
         this.snackbarMessage = error.response.data.message
