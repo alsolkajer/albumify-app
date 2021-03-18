@@ -3,7 +3,6 @@ const express = require('express')
 const app = express()
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
-
 const mongoose = require('mongoose')
 
 app.use(express.json())
@@ -21,13 +20,18 @@ const db = require('./config/keys').MongoURI
 app.use(passport.initialize())
 
 // Connect to Mongo
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+})
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err))
 
 // Routes to authentication API
 
 app.use('/auth', require('./routes/authentication'))
+app.use('/upload', require('./routes/upload'))
+app.use('/dashboard', require('./routes/dashboard'))
 
 export default {
   path: '/api',
