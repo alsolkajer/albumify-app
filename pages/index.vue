@@ -52,7 +52,6 @@
         />
       </v-col>
     </v-row>
-    <snack-bar :snackbar-message.sync="snackbarMessage" />
   </v-container>
 </template>
 <script>

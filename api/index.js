@@ -4,14 +4,14 @@ const app = express()
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
+const helmet = require('helmet')
 
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 
-app.get('/test', function (req, res) {
-  res.send('Test successful')
-})
+// Securing Http header
+app.use(helmet())
 
 // DB Configuration
 const db = require('./config/keys').MongoURI

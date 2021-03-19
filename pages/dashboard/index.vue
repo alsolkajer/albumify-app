@@ -3,8 +3,15 @@
     <v-app-bar
       app
       shrink-on-scroll
+      height="70"
     >
-      <v-app-bar-nav-icon />
+      <nuxt-link to="/upload" :style="{ marginTop:'12px' }">
+        <v-app-bar-nav-icon>
+          <v-icon>
+            mdi-file-upload
+          </v-icon>
+        </v-app-bar-nav-icon>
+      </nuxt-link>
 
       <v-toolbar-title>Dashboard -</v-toolbar-title>
       <v-toolbar-title
@@ -47,22 +54,18 @@
             </a>
           </v-col>
         </v-row>
-        <snack-bar :snackbar-message.sync="snackbarMessage" />
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import SnackBar from '@/components/snackBar'
 
 export default {
-  components: { SnackBar },
   middleware: ['auth-cookies'],
   data: () => ({
     files: null,
-    filesLength: 0,
-    snackbarMessage: ''
+    filesLength: 0
   }),
   mounted () {
     this.$axios
