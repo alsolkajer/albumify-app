@@ -1,4 +1,24 @@
-# albumify
+# Albumify app
+## A social file album app
+
+It's a Social album file directory. Here you can upload your file, store it, and download it with others. Build in nuxt js, express, and vuetify.
+
+Default MongoDB link can be changed through api/config/keys.
+
+## Features and specifications
+- Authentication JWT (Login, Register, Logout) using passport and nuxt auth
+- Nuxt and Express connect through server middleware
+- Upload a file
+- Download a file
+- OWASP Protection
+
+note: depreciation warning can be ignored safely
+https://stackoverflow.com/questions/66190532/deprecationwarning-listening-to-events-on-the-db-class-has-been-deprecated-and
+
+## Deployment
+https://albumify-file-app.vercel.app/
+
+note: backend hasn't been set up. (unfinished)
 
 ## Build Setup
 

@@ -43,6 +43,7 @@
               <v-card height="300">
                 <v-card-title v-if="file.isImage">
                   <v-img
+                    contain
                     height="250"
                     :src="'/api/files/image/' + file.filename"
                   />
